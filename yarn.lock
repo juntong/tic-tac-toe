@@ -680,7 +680,7 @@
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@firebase/firestore-types/-/firestore-types-0.6.0.tgz#560befea439a4a9d830866fa5f5859e4bb30d770"
 
-"@firebase/firestore@0.7.2":
+"@firebase/firestore@0.7.2", "@firebase/firestore@^0.7.2":
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-0.7.2.tgz#077bc793445faa4c68b5a3960ef95b43d135ddc7"
   dependencies:
@@ -776,6 +776,10 @@
 "@nodelib/fs.stat@^1.0.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.1.tgz#53f349bb986ab273d601175aa1b25a655ab90ee3"
+
+"@posva/vuefire-core@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@posva/vuefire-core/-/vuefire-core-1.0.2.tgz#a9b0bdc755a5365da5d401e4493759a442eb43f2"
 
 "@vue/babel-preset-app@^3.0.1":
   version "3.0.1"
@@ -6846,6 +6850,10 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+sweetalert2@^7.26.13:
+  version "7.26.13"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.26.13.tgz#1e2a2527a5096c9a570b9eaf8b572cea1c754337"
+
 table@4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/table/-/table-4.0.2.tgz#a33447375391e766ad34d3486e6e2aedc84d2e36"
@@ -7293,6 +7301,12 @@ vue-template-es2015-compiler@^1.6.0:
 vue@^2.5.17:
   version "2.5.17"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
+
+vuefire@^2.0.0-alpha.15:
+  version "2.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/vuefire/-/vuefire-2.0.0-alpha.15.tgz#fd45d1311a2f56bea0003f384302847ea807b6ff"
+  dependencies:
+    "@posva/vuefire-core" "^1.0.2"
 
 watchpack@^1.5.0:
   version "1.6.0"

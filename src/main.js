@@ -1,10 +1,14 @@
 import Vue from 'vue';
-import firebase from 'firebase';
+import VueFire from 'vuefire';
+import swal from 'sweetalert2';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 import App from './App.vue';
 
 import Square from './components/Square.vue';
 import router from './router';
 
+Vue.use(VueFire);
 Vue.config.productionTip = false;
 
 const config = {
@@ -17,6 +21,11 @@ const config = {
 };
 
 firebase.initializeApp(config);
+
+window.firebase = firebase;
+window.db = firebase.firestore();
+window.db.settings({ timestampsInSnapshots: true });
+window.swal = swal;
 
 Vue.component('Square', Square);
 

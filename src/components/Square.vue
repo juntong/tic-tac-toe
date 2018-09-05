@@ -1,7 +1,7 @@
 <template>
   <div
     @click="handleClick"
-    class="w-1/3 h-32 p-8 border-solid border flex items-center cursor-pointer">
+    class="h-24 p-4 border-solid border flex items-center cursor-pointer">
     <div class="flex-1 text-center text-3xl">{{ value }}</div>
   </div>
 </template>

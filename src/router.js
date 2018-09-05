@@ -12,9 +12,9 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      path: '/tic-tac-toe/:id',
+      name: 'tic-tac-toe',
+      component: () => import('./views/TicTacToe.vue'),
     },
   ],
 });
