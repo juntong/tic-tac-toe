@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import MainLayout from './layouts/Main.vue';
 
 Vue.use(Router);
 
@@ -8,8 +8,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'index',
+      component: MainLayout,
+      redirect: '/home',
+      children: [
+        {
+          path: '/home',
+          name: 'home',
+          component: () => import('./views/Home.vue'),
+        },
+      ],
     },
     {
       path: '/tic-tac-toe/:id',

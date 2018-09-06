@@ -29,7 +29,9 @@
     </div>
     <div class="flex flex-wrap w-full justify-center">
       <div class="flex flex-wrap w-4/5 md:w-1/3 mt-4">
-        <button type="button" @click="reset">
+        <button
+          class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
+          type="button" @click="reset">
           Reset
         </button>
       </div>
@@ -44,11 +46,14 @@ export default {
     return {
       winner: null,
       player: null,
+      type: null,
       room: {
         squares: Array(9).fill(null),
         xIsNext: true,
-        playerOne: null,
-        playerTwo: null,
+        players: {
+          join: [],
+          observes: [],
+        },
       },
     };
   },
@@ -60,7 +65,6 @@ export default {
   },
   watch: {
     winner(data) {
-      console.log(data, 'ssssssdfs');
       if (data) {
         window.swal('Alert!!!!!', `Winner is ${this.player} ${data}`, 'success');
       }
@@ -68,16 +72,28 @@ export default {
   },
   methods: {
     handleClick(i) {
+      const currentType = this.room.xIsNext ? 'X' : 'O';
+      if (this.type === null) {
+        this.type = currentType;
+      }
+
       if (this.calculateWinner() || this.room.squares[i]) {
         return;
       }
-      console.log('before', this.room.xIsNext);
+
+      if (this.type !== currentType) {
+        return window.swal('Alert !!!!', 'อย่าโกงดิเห้ย...', 'error');
+      }
+
       const squares = this.room.squares.slice();
       squares[i] = this.room.xIsNext ? 'X' : 'O';
+
+      if (this.type === null) {
+        this.type = squares[i];
+      }
+
       this.room.xIsNext = !this.room.xIsNext;
       this.room.squares = squares;
-
-      console.log('after', this.room.xIsNext);
 
       window.db.collection('rooms')
         .doc(`/${this.$route.params.id}`)
@@ -103,13 +119,17 @@ export default {
         if (this.room.squares[a] &&
           this.room.squares[a] === this.room.squares[b] &&
           this.room.squares[a] === this.room.squares[c]) {
-          this.winner = this.room.squares[a];
+          this.winner = this.room.squares[a] === this.type ? 'คุณชนะ' : 'ว๊ายยยยแพ้้้....';
+
+          return this.room.squares[a];
         }
       }
 
       return null;
     },
     reset() {
+      this.type = null;
+
       window.db.collection('rooms')
         .doc(`/${this.$route.params.id}`)
         .update({
@@ -119,22 +139,24 @@ export default {
     },
   },
   mounted() {
-    if (this.player === null) {
-      if (this.room.playerOne === null) {
-        window.db.collection('rooms')
-          .doc(`/${this.$route.params.id}`)
-          .update({
-            playerOne: this.$route.query.playerName,
-          });
-      } else {
-        window.db.collection('rooms')
-          .doc(`/${this.$route.params.id}`)
-          .update({
-            playerTwo: this.$route.query.playerName,
-          });
-      }
-
+    if (this.room.players.join.length < 2) {
+      console.log('join....');
+      const playersJoin = this.room.players.join;
       this.player = this.$route.query.playerName;
+      playersJoin.push([
+        {
+          name: this.players,
+          type: null,
+        },
+      ]);
+
+      window.db.collection('rooms')
+        .doc(`/${this.$route.params.id}`)
+        .update({
+          players: {
+            join: playersJoin,
+          },
+        });
     }
   },
 };

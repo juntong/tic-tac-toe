@@ -3,8 +3,10 @@ import VueFire from 'vuefire';
 import swal from 'sweetalert2';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import App from './App.vue';
 
+import 'normalize.css';
+
+import App from './App.vue';
 import Square from './components/Square.vue';
 import router from './router';
 
