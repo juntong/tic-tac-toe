@@ -6854,9 +6854,9 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-sweetalert2@^7.26.13:
-  version "7.26.13"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.26.13.tgz#1e2a2527a5096c9a570b9eaf8b572cea1c754337"
+sweetalert2@^7.26.26:
+  version "7.26.26"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.26.26.tgz#a6010ae0d21e4f7204a3587301134952e6ee0809"
 
 table@4.0.2:
   version "4.0.2"
